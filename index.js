@@ -5,6 +5,8 @@ const bodyParser = require("body-parser")
 const ObjectId = require('mongodb').ObjectId;
 require('dotenv').config()
 
+const port = 5000;
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ozmnc.mongodb.net/volunteer?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -28,7 +30,7 @@ client.connect(err => {
           res.send(result.insertedCount > 0)
       })
   })
-
+  
   // read to server
   app.get('/volunteerlist', (req,res)=> {
       VolunteerCollection.find({email: req.query.email})
@@ -55,4 +57,4 @@ client.connect(err => {
 });
 
 
-app.listen(5000)
+app.listen(process.env.PORT || port)
