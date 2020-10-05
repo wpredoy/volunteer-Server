@@ -4,8 +4,6 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const ObjectId = require('mongodb').ObjectId;
 require('dotenv').config()
-// volunteer
-// password: volunteer12345 name: volunteer db list VolunteerList
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ozmnc.mongodb.net/volunteer?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
