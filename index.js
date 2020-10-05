@@ -43,7 +43,7 @@ client.connect(err => {
   app.delete("/deleteId/:id", (req,res)=> {
       VolunteerCollection.deleteOne({_id: ObjectId(req.params.id)})
       .then(result=> {
-         res.send(result.deletedCount > 0)
+         res.send(result)
       })
   })
   // get all admin
